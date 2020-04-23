@@ -10,6 +10,17 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: oc-cmd@2
+  inputs:
+    openshiftService: 'OpenShift Demo'
+    version: '4.3'
+    cmd: 'oc start-build hello-pod --follow'
+    uselocalOc: true
+- task: oc-cmd@2
+  inputs:
+    openshiftService: 'OpenShift Demo'
+    version: '4.3'
+    cmd: 'oc status'
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
